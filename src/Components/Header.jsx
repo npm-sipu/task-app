@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import Sidebar from "./Sidebar";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState("");
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
+  const userData = JSON.parse(sessionStorage.getItem("registerData"));
+  useEffect(() => {
+    if (userData && userData.firstName) {
+      setIsLoggedIn(true);
+      setUserName(userData.firstName);
+    } else {
+      setIsLoggedIn(false);
+      setUserName("");
+    }
+  }, [userData]);
 
   return (
     <div className='navbar bg-base-100 shadow-lg'>
@@ -35,16 +47,26 @@ const Header = () => {
               People
             </NavLink>
           </li>
-          <li>
-            <NavLink to='/auth' className='text-md'>
-              Auth
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/profile' className='text-md'>
-              Auth
-            </NavLink>
-          </li>
+          {isLoggedIn ? (
+            <li>
+              <NavLink to='/profile' className='text-md'>
+                Profile ({userName})
+              </NavLink>
+            </li>
+          ) : (
+            <>
+              <li>
+                <NavLink to='/login' className='text-md'>
+                  Login
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to='/register' className='text-md'>
+                  Register
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </div>
