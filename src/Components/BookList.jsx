@@ -37,7 +37,6 @@ const BookList = () => {
               <p className='text-gray-700 mt-2'>ISBN: {book.isbn}</p>
               <p className='text-gray-700 mt-2'>Published: {book.published}</p>
               <p className='text-gray-700 mt-2'>Publisher: {book.publisher}</p>
-              <img src={book.image} alt={book.title} className='mt-4' />
             </div>
           </div>
         ))}

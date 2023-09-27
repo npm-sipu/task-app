@@ -7,7 +7,7 @@ import {
 
 import RootLayout from "./Components/RootLayout";
 import Homescreen from "./Screens/Homescreen";
-import Company from "./Screens/Company";
+import Company from "./Screens/Companies";
 import Login from "./Screens/Login";
 import Register from "./Screens/Register";
 import Profile from "./Screens/Profile";

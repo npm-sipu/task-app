@@ -15,13 +15,13 @@ export const fetchBooks = async () => {
 };
 
 export const fetchProducts = async () => {
-  const response = await axios.get(`${URL}products?_quantity=1&_taxes
+  const response = await axios.get(`${URL}products?_quantity=10&_taxes
     =12&_categories_type=uuid`);
   return response.data;
 };
 
 export const fetchCompanies = async () => {
-  const response = await axios.get(`${URL}companies?_quantity=20`);
+  const response = await axios.get(`${URL}companies?_quantity=10`);
   return response.data;
 };
 
