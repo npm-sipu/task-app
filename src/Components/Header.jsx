@@ -6,7 +6,6 @@ import Sidebar from "./Sidebar";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userName, setUserName] = useState("");
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -15,10 +14,8 @@ const Header = () => {
   useEffect(() => {
     if (userData && userData.firstName) {
       setIsLoggedIn(true);
-      setUserName(userData.firstName);
     } else {
       setIsLoggedIn(false);
-      setUserName("");
     }
   }, [userData]);
 
@@ -50,7 +47,7 @@ const Header = () => {
           {isLoggedIn ? (
             <li>
               <NavLink to='/profile' className='text-md'>
-                Profile ({userName})
+                {userData.email}
               </NavLink>
             </li>
           ) : (
